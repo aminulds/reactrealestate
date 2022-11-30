@@ -1,5 +1,8 @@
+import { async } from '@firebase/util';
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import GAuth from '../components/GAuth';
 
 const ForgotPass = () => {
@@ -7,6 +10,19 @@ const ForgotPass = () => {
 
   const onChangeHandler = (e) => {
     setEmail(e.target.value);
+  };
+
+  const onForgotPassHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      const auth = getAuth();
+      await sendPasswordResetEmail(auth, email);
+      toast.success("Please check email!");
+    } catch (error) {
+      toast.error("Email dosen't match!");
+    }
+
   };
 
   return (
@@ -19,7 +35,7 @@ const ForgotPass = () => {
         </div>
 
         <div className='w-full md:w-[67%] lg:w-[40%] lg:ml-20'>
-          <form >
+          <form onSubmit={onForgotPassHandler}>
             <input className='mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border-gray-300 rounded transition ease-in-out' type="email" id='email' value={email} onChange={onChangeHandler} placeholder="Email address" />
 
             <div className='flex justify-between whitespace-nowrap text-sm sm:text-lg'>
