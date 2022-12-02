@@ -26,7 +26,7 @@ const Header = () => {
   };
 
   return (
-    <section className=' bg-white border-b shadow-sm sticky top-0 z-50'>
+    <section className=' bg-white border-b shadow-sm sticky top-0 z-40'>
       <header className='flex items-center justify-between max-w-6xl mx-auto px-3'>
         <div>
           <img onClick={() => navigate('/')} className='h-14 cursor-pointer' src={logo} alt="logo" />
