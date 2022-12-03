@@ -15,18 +15,18 @@ const CreateListing = () => {
   const [loadding, setLoadding] = useState(false);
   const [formData, setFormData] = useState({
     type: "sale",
-    name: "",
+    name: "Vero Apartments",
     bedrooms: 1,
     bathrooms: 1,
     parking: true,
     furnished: false,
-    address: "",
-    description: "",
+    address: "Boston, MA 02122",
+    description: "Avenue is boutique-new construction in the Ashmont neighborhood. The chic finishes are complemented by high ceilings. The apartment homes are drenched in natural light and many feature private outdoor space.",
     offer: true,
-    regularPrice: 50,
-    discountedPrice: 40,
-    latitude: 0,
-    longitude: 0,
+    regularPrice: 5000,
+    discountedPrice: 4000,
+    latitude: 34.816,
+    longitude: -91.565,
     images: {},
   });
   const { type, name, bedrooms, bathrooms, parking, furnished, address, description, offer, regularPrice, discountedPrice, latitude, longitude, images } = formData;
