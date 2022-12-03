@@ -1,14 +1,17 @@
 import { getAuth, updateProfile } from 'firebase/auth';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { doc, updateDoc } from 'firebase/firestore';
+import { collection, doc, orderBy, query, updateDoc, where, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 import { FcHome } from 'react-icons/fc';
+import ListingItem from '../components/ListingItem';
 
 const Profile = () => {
   const navigate = useNavigate();
   const [changeProfile, setChangeProfile] = useState(false);
+  const [listings, setListings] = useState(null);
+  const [loadding, setLoadding] = useState(true);
   const auth = getAuth();
   const [formData, setFormData] = useState({
     name: auth.currentUser.displayName,
@@ -49,6 +52,29 @@ const Profile = () => {
     }
   };
 
+  // Fetch Data
+  useEffect(() => {
+    const fetchUserListings = async () => {
+      const listingRef = collection(db, "listings");
+      const q = query(
+        listingRef,
+        where("userRef", "==", auth.currentUser.uid),
+        orderBy("timestamp", "desc")
+      );
+      const querySnap = await getDocs(q);
+      let listings = [];
+      querySnap.forEach((doc) => {
+        return listings.push({
+          id: doc.id,
+          data: doc.data(),
+        });
+      });
+      setListings(listings);
+      setLoadding(false);
+    }
+    fetchUserListings();
+  }, [auth.currentUser.uid]);
+
   return (
     <>
       <section className='max-w-6xl mx-auto flex justify-center items-center flex-col'>
@@ -79,8 +105,23 @@ const Profile = () => {
 
         </div>
 
-
       </section>
+
+      {/* My Listing */}
+      <section className='max-w-6xl px-3 mt-6 mx-auto'>
+        {!loadding && listings.length > 0 && (
+          <>
+            <h2 className='text-2xl text-center font-semibold'>My Listings</h2>
+
+            <ul>
+              {listings.map((item) => (
+                <ListingItem key={item.id} id={item.id} listing={item.data} />
+              ))}
+            </ul>
+          </>
+        )}
+      </section>
+
     </>
   )
 }
