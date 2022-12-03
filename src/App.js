@@ -22,10 +22,12 @@ function App() {
           <Route path="/profile" element={<PrivetRout />}>
             <Route path="/profile" element={<Profile />} />
           </Route>
+          <Route path="/create-listing" element={<PrivetRout />}>
+            <Route path="/create-listing" element={<CreateListing />} />
+          </Route>
           <Route path="/sign-in" element={<Signin />} />
           <Route path="/sign-up" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPass />} />
-          <Route path="/create-listing" element={<CreateListing />} />
         </Routes>
       </Router>
 

@@ -2,7 +2,6 @@ import { getAuth, updateProfile } from 'firebase/auth';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { async } from '@firebase/util';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { FcHome } from 'react-icons/fc';
