@@ -222,12 +222,12 @@ const CreateListing = () => {
           <div className='flex items-center justify-between space-x-6 mb-6'>
             <div>
               <p className='text-lg font-semibold'>Latitude</p>
-              <input onChange={onChange} type="number" id="latitude" value={latitude} required={enableLoaction} min="-90" max="90" className='w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center' />
+              <input onChange={onChange} type="number" id="latitude" value={latitude} required={enableLoaction} className='w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center' />
             </div>
 
             <div>
               <p className='text-lg font-semibold'>Logitude</p>
-              <input onChange={onChange} type="number" id="longitude" value={longitude} required={enableLoaction} min="-180" max="180" className='w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center' />
+              <input onChange={onChange} type="number" id="longitude" value={longitude} required={enableLoaction} className='w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center' />
             </div>
           </div>
         )}
