@@ -48,6 +48,13 @@ const EditeListing = () => {
   const params = useParams();
 
   useEffect(() => {
+    if (listing && listing.userRef !== auth.currentUser.uid) {
+      toast.error("You are not authorized to Edit!");
+      navigate("/");
+    }
+  }, [auth.currentUser.uid, listing, navigate])
+
+  useEffect(() => {
     setLoadding(true);
     const fetchListing = async () => {
       const docRef = doc(db, "listings", params.listingId);
