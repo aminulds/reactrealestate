@@ -52,7 +52,7 @@ export default function Slider() {
           autoplay={{ delay: 3000 }}
         >
           {listings.map(({ data, id }) => (
-            <SwiperSlide
+            <SwiperSlide className="cursor-pointer"
               key={id}
               onClick={() => navigate(`/category/${data.type}/${id}`)}
             >
