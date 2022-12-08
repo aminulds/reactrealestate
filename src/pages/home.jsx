@@ -1,6 +1,5 @@
 import {
   collection,
-  getDoc,
   getDocs,
   limit,
   orderBy,
@@ -40,7 +39,6 @@ const Home = () => {
         });
         setOfferListings(listings);
       } catch (error) {
-        console.log(error);
       }
     }
     fetchListings();
@@ -70,7 +68,7 @@ const Home = () => {
         });
         setRentListings(listings);
       } catch (error) {
-        console.log(error);
+
       }
     }
     fetchListings();
@@ -100,7 +98,6 @@ const Home = () => {
         });
         setSaleListings(listings);
       } catch (error) {
-        console.log(error);
       }
     }
     fetchListings();

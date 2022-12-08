@@ -10,8 +10,6 @@ import {
 import { getAuth } from "firebase/auth";
 import { v4 as uuidv4 } from "uuid";
 import {
-  addDoc,
-  collection,
   doc,
   getDoc,
   serverTimestamp,
@@ -125,13 +123,11 @@ const EditeListing = () => {
         uploadTask.on(
           "state_changed",
           (snapshot) => {
-            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            // const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             switch (snapshot.state) {
               case "paused":
-                console.log("upload pause");
                 break;
               case "running":
-                console.log("upload running");
                 break;
             }
           },

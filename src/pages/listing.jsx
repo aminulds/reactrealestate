@@ -27,7 +27,6 @@ const Listing = () => {
       if (docSnap.exists()) {
         setListing(docSnap.data())
         setLoading(false);
-        console.log(listing)
       }
     }
     fetchListing();
